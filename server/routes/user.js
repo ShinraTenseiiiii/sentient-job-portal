@@ -8,14 +8,16 @@ const { Jwt_Secret } = require("../config");
 // User Routes
 router.post('/signup', async (req, res) => {
     const { email, password } = req.body; 
-
+console.log(req.body);
     try {
         // Create the new user
         const user = await User.create({ email, password }); 
         res.json({ message: 'User created successfully' });
     } catch (error) {
-        if (error.code === 11000) { 
+       console.log(error);  
+       if (error.code === 11000) { 
             // duplicate key error 
+           
             res.status(400).json({ message: 'Email already exists' });
         } else {
             console.error('Error creating user:', error);
@@ -24,7 +26,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-router.post('/signin', async(req, res) => {
+router.post('/login', async(req, res) => {
     const { username, password } = req.body;
 
     const user = await User.findOne({ username, password });

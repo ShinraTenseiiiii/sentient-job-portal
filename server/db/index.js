@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 async function connectToMongoDB() {
-    const url = 'mongodb+srv://Joydeep:@sentient.m9yxcx5.mongodb.net/sentient';
+    const url = 'mongodb+srv://Joydeep:FeMH83FYwpJuuJTq@sentient.m9yxcx5.mongodb.net/sentient';
     const clusterName = url.split('@')[1].split('.')[0];
     const dbName = url.split('/').pop().split('?')[0];
 
@@ -24,7 +24,7 @@ const AdminSchema = new mongoose.Schema({
 });
 
 const UserSchema = new mongoose.Schema({
-    username: String,
+    email: String,
     password: String,
     appliedJobs: [
         {

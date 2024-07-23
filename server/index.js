@@ -3,7 +3,12 @@ const bodyParser = require('body-parser');
 const app = express();
 const adminRouter = require("./routes/admin")
 const userRouter = require("./routes/user");
+const cors = require('cors')
 
+app.use(cors({
+    origin: '*',
+    credentials: true
+}))
 
 
 app.use(bodyParser.json());
